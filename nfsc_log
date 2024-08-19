@@ -1,0 +1,180 @@
+﻿Script started, output log file is 'nfss1'.
+root@nfss:/home/vagrant#
+root@nfss:/home/vagrant#
+root@nfss:/home/vagrant#
+root@nfss:/home/vagrant# apt install nfs-kernel-server
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  keyutils libnfsidmap1 nfs-common rpcbind
+Suggested packages:
+  watchdog
+The following NEW packages will be installed:
+  keyutils libnfsidmap1 nfs-common nfs-kernel-server rpcbind
+0 upgraded, 5 newly installed, 0 to remove and 3 not upgraded.
+Need to get 521 kB of archives.
+After this operation, 1973 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnfsidmap1 amd64 1:2.6.1-1ubuntu1.2 [42.9 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 rpcbind amd64 1.2.6-2build1 [46.6 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy/main amd64 keyutils amd64 1.6.1-2ubuntu3 [50.4 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 nfs-common amd64 1:2.6.1-1ubuntu1.2 [241 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 nfs-kernel-server amd64 1:2.6.1-1ubuntu1.2 [140 kB]
+Fetched 521 kB in 1s (390 kB/s)
+Selecting previously unselected package libnfsidmap1:amd64.
+(Reading database ... 70106 files and directories currently installed.)
+Preparing to unpack .../libnfsidmap1_1%3a2.6.1-1ubuntu1.2_amd64.deb ...
+Unpacking libnfsidmap1:amd64 (1:2.6.1-1ubuntu1.2) ...
+Selecting previously unselected package rpcbind.
+Preparing to unpack .../rpcbind_1.2.6-2build1_amd64.deb ...
+Unpacking rpcbind (1.2.6-2build1) ...
+Selecting previously unselected package keyutils.
+Preparing to unpack .../keyutils_1.6.1-2ubuntu3_amd64.deb ...
+Unpacking keyutils (1.6.1-2ubuntu3) ...
+Selecting previously unselected package nfs-common.
+Preparing to unpack .../nfs-common_1%3a2.6.1-1ubuntu1.2_amd64.deb ...
+Unpacking nfs-common (1:2.6.1-1ubuntu1.2) ...
+Selecting previously unselected package nfs-kernel-server.
+Preparing to unpack .../nfs-kernel-server_1%3a2.6.1-1ubuntu1.2_amd64.deb ...
+Unpacking nfs-kernel-server (1:2.6.1-1ubuntu1.2) ...
+Setting up libnfsidmap1:amd64 (1:2.6.1-1ubuntu1.2) ...
+Setting up rpcbind (1.2.6-2build1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/rpcbind.service → /lib/systemd/system/rpcbind.service.
+Created symlink /etc/systemd/system/sockets.target.wants/rpcbind.socket → /lib/systemd/system/rpcbind.socket.
+Setting up keyutils (1.6.1-2ubuntu3) ...
+Setting up nfs-common (1:2.6.1-1ubuntu1.2) ...
+
+Creating config file /etc/idmapd.conf with new version
+
+Creating config file /etc/nfs.conf with new version
+Adding system user `statd' (UID 114) ...
+Adding new user `statd' (UID 114) with group `nogroup' ...
+Not creating home directory `/var/lib/nfs'.
+Created symlink /etc/systemd/system/multi-user.target.wants/nfs-client.target → /lib/systemd/system/nfs-client.target.
+Created symlink /etc/systemd/system/remote-fs.target.wants/nfs-client.target → /lib/systemd/system/nfs-client.target.
+auth-rpcgss-module.service is a disabled or a static unit, not starting it.
+nfs-idmapd.service is a disabled or a static unit, not starting it.
+nfs-utils.service is a disabled or a static unit, not starting it.
+proc-fs-nfsd.mount is a disabled or a static unit, not starting it.
+rpc-gssd.service is a disabled or a static unit, not starting it.
+rpc-statd-notify.service is a disabled or a static unit, not starting it.
+rpc-statd.service is a disabled or a static unit, not starting it.
+rpc-svcgssd.service is a disabled or a static unit, not starting it.
+rpc_pipefs.target is a disabled or a static unit, not starting it.
+var-lib-nfs-rpc_pipefs.mount is a disabled or a static unit, not starting it.
+Setting up nfs-kernel-server (1:2.6.1-1ubuntu1.2) ...
+Created symlink /etc/systemd/system/nfs-client.target.wants/nfs-blkmap.service → /lib/systemd/system/nfs-blkmap.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/nfs-server.service → /lib/systemd/system/nfs-server.service.
+nfs-mountd.service is a disabled or a static unit, not starting it.
+nfsdcld.service is a disabled or a static unit, not starting it.
+
+Creating config file /etc/exports with new version
+
+Creating config file /etc/default/nfs-kernel-server with new version
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+Scanning processes...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+root@nfss:/home/vagrant# ss -tnplu
+Netid        State         Recv-Q        Send-Q                  Local Address:Port                Peer Address:Port        Process
+udp          UNCONN        0             0                             0.0.0.0:34026                    0.0.0.0:*
+
+udp          UNCONN        0             0                           127.0.0.1:753                      0.0.0.0:*
+ users:(("rpc.statd",pid=16687,fd=8))
+udp          UNCONN        0             0                             0.0.0.0:57169                    0.0.0.0:*
+ users:(("rpc.mountd",pid=16692,fd=12))
+udp          UNCONN        0             0                             0.0.0.0:39881                    0.0.0.0:*
+ users:(("rpc.statd",pid=16687,fd=7))
+udp          UNCONN        0             0                             0.0.0.0:35324                    0.0.0.0:*
+ users:(("rpc.mountd",pid=16692,fd=8))
+udp          UNCONN        0             0                             0.0.0.0:46622                    0.0.0.0:*
+ users:(("rpc.mountd",pid=16692,fd=4))
+udp          UNCONN        0             0                       127.0.0.53%lo:53                       0.0.0.0:*
+ users:(("systemd-resolve",pid=553,fd=13))
+udp          UNCONN        0             0                    10.0.2.15%enp0s3:68                       0.0.0.0:*
+ users:(("systemd-network",pid=10005,fd=18))
+udp          UNCONN        0             0                             0.0.0.0:111                      0.0.0.0:*
+ users:(("rpcbind",pid=16130,fd=5),("systemd",pid=1,fd=89))
+udp          UNCONN        0             0                                [::]:43751                       [::]:*
+ users:(("rpc.statd",pid=16687,fd=10))
+udp          UNCONN        0             0                                [::]:54555                       [::]:*
+
+udp          UNCONN        0             0                                [::]:45431                       [::]:*
+ users:(("rpc.mountd",pid=16692,fd=6))
+udp          UNCONN        0             0                                [::]:53801                       [::]:*
+ users:(("rpc.mountd",pid=16692,fd=14))
+udp          UNCONN        0             0                                [::]:53309                       [::]:*
+ users:(("rpc.mountd",pid=16692,fd=10))
+udp          UNCONN        0             0                                [::]:111                         [::]:*
+ users:(("rpcbind",pid=16130,fd=7),("systemd",pid=1,fd=96))
+tcp          LISTEN        0             4096                    127.0.0.53%lo:53                       0.0.0.0:*
+ users:(("systemd-resolve",pid=553,fd=14))
+tcp          LISTEN        0             4096                          0.0.0.0:57763                    0.0.0.0:*
+ users:(("rpc.mountd",pid=16692,fd=13))
+tcp          LISTEN        0             4096                          0.0.0.0:50031                    0.0.0.0:*
+ users:(("rpc.statd",pid=16687,fd=9))
+tcp          LISTEN        0             4096                          0.0.0.0:32981                    0.0.0.0:*
+ users:(("rpc.mountd",pid=16692,fd=5))
+tcp          LISTEN        0             4096                          0.0.0.0:58025                    0.0.0.0:*
+ users:(("rpc.mountd",pid=16692,fd=9))
+tcp          LISTEN        0             4096                          0.0.0.0:111                      0.0.0.0:*
+ users:(("rpcbind",pid=16130,fd=4),("systemd",pid=1,fd=88))
+tcp          LISTEN        0             64                            0.0.0.0:41057                    0.0.0.0:*
+
+tcp          LISTEN        0             64                            0.0.0.0:2049                     0.0.0.0:*
+
+tcp          LISTEN        0             128                           0.0.0.0:22                       0.0.0.0:*
+ users:(("sshd",pid=839,fd=3))
+tcp          LISTEN        0             4096                             [::]:50059                       [::]:*
+ users:(("rpc.mountd",pid=16692,fd=15))
+tcp          LISTEN        0             4096                             [::]:40699                       [::]:*
+ users:(("rpc.mountd",pid=16692,fd=7))
+tcp          LISTEN        0             64                               [::]:41617                       [::]:*
+
+tcp          LISTEN        0             4096                             [::]:34397                       [::]:*
+ users:(("rpc.mountd",pid=16692,fd=11))
+tcp          LISTEN        0             4096                             [::]:111                         [::]:*
+ users:(("rpcbind",pid=16130,fd=6),("systemd",pid=1,fd=95))
+tcp          LISTEN        0             64                               [::]:2049                        [::]:*
+
+tcp          LISTEN        0             128                              [::]:22                          [::]:*
+ users:(("sshd",pid=839,fd=4))
+tcp          LISTEN        0             4096                             [::]:38433                       [::]:*
+ users:(("rpc.statd",pid=16687,fd=11))
+root@nfss:/home/vagrant#
+root@nfss:/home/vagrant#
+root@nfss:/home/vagrant# mkdir -p /srv/share/upload
+root@nfss:/home/vagrant# chown -R nobody:nogroup /srv/share
+root@nfss:/home/vagrant#
+root@nfss:/home/vagrant# chmod 0777 /srv/share/upload
+root@nfss:/home/vagrant# cat << EOF > /etc/exports
+> /srv/share 192.168.50.11/32(rw,sync,root_squash)
+>
+> EOF
+root@nfss:/home/vagrant# exportfs -r
+exportfs: /etc/exports [1]: Neither 'subtree_check' or 'no_subtree_check' specified for export "192.168.50.11/32:/srv/share".
+  Assuming default behaviour ('no_subtree_check').
+  NOTE: this default has changed since nfs-utils version 1.0.x
+
+root@nfss:/home/vagrant# exportfs -s
+/srv/share  192.168.50.11/32(sync,wdelay,hide,no_subtree_check,sec=sys,rw,secure,root_squash,no_all_squash)
+root@nfss:/home/vagrant# exportfs -s
+/srv/share  192.168.50.11/32(sync,wdelay,hide,no_subtree_check,sec=sys,rw,secure,root_squash,no_all_squash)
+root@nfss:/home/vagrant#
+root@nfss:/home/vagrant#
+root@nfss:/home/vagrant# cd /srv/share/upload
+root@nfss:/srv/share/upload#
+root@nfss:/srv/share/upload# touch check_file
+root@nfss:/srv/share/upload# ls
+check_file  client_file
